@@ -125,3 +125,14 @@ def api_update_appointment(request, pk):
             response = JsonResponse({"message": "Appointment does not exist"})
             response.status_code = 404
             return response
+
+
+@require_http_methods(["PUT"])
+def api_cancel_app(request, pk):
+    appointment = Appointment.objects.get(id=pk)
+    appointment.status = "Canceled"
+    return JsonResponse(
+        appointment,
+        encoder=AppointmentEncoder,
+        safe=False,
+    )
