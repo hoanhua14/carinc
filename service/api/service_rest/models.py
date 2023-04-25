@@ -1,6 +1,6 @@
 from django.db import models
 
-class Techcian(models.Model):
+class Technician(models.Model):
     first_name = models.CharField(max_length=2000)
     last_name = models.CharField(max_length=2000)
     employee_id = models.CharField(max_length=2000)
@@ -15,7 +15,7 @@ class Appointment(models.Model):
     vin = models.CharField(max_length=2000)
     customer = models.CharField(max_length=2000)
     technician = models.ForeignKey(
-        Techcian,
+        Technician,
         related_name="technician",
         on_delete=models.CASCADE,
 
