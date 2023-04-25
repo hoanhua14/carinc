@@ -30,3 +30,14 @@ def api_list_techs(request):
             encoder=TechEncoder,
             safe=False,
         )
+
+@require_http_methods(["DELETE"])
+def api_delete_tech(request, pk):
+    if request.method == "DELETE":
+        try:
+            technician = Technician.objects.get(id=pk)
+            technician.delete()
+            response = {"deleted": True}
+        except Technician.DoesNotExist:
+            response = {"deleted": False}
+        return JsonResponse(response, safe=False)
