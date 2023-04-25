@@ -136,3 +136,13 @@ def api_cancel_app(request, pk):
         encoder=AppointmentEncoder,
         safe=False,
     )
+
+@require_http_methods(["PUT"])
+def api_finish_app(request, pk):
+    appointment = Appointment.objects.get(id=pk)
+    appointment.status = "Finished"
+    return JsonResponse(
+        appointment,
+        encoder=AppointmentEncoder,
+        safe=False,
+    )
