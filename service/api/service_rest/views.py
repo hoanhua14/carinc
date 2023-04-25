@@ -60,7 +60,8 @@ def api_delete_tech(request, pk):
             technician.delete()
             response = {"deleted": True}
         except Technician.DoesNotExist:
-            response = {"deleted": False}
+            response = {"deleted": False, "message": "Technician does not exist"}
+            status=400
         return JsonResponse(response, safe=False)
 
 @require_http_methods(["GET","POST"])
@@ -94,3 +95,4 @@ def api_list_appointments(request):
 
 # @require_http_methods(["DELETE","PUT","GET"])
 # def api_update_appointment(request, pk):
+#     if request.method ==
