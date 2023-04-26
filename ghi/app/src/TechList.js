@@ -1,6 +1,21 @@
-import { NavLink } from 'react-router-dom';
 
-export default function TechList(props) {
+import { useState, useEffect } from 'react';
+
+export default function TechList() {
+    const [technicians, setTechnicians] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            const url = 'http://localhost:8080/api/technicians/';
+            const response = await fetch(url);
+            if (response.ok) {
+                const data = await response.json();
+                setTechnicians(data.technicians);
+            }
+        }
+        fetchData();
+    }, []);
+
+
     return (
         <>
             <div className="font-weight-bold">Technicians</div>
@@ -13,7 +28,7 @@ export default function TechList(props) {
                     </tr>
                 </thead>
                 <tbody>
-                {props.technicians?.map((technician) => {
+                {technicians?.map((technician) => {
                     return (
                         <tr key={technician.id}>
                             <td>{technician.employee_id}</td>
@@ -26,4 +41,5 @@ export default function TechList(props) {
             </table>
         </>
     )
+
 }
