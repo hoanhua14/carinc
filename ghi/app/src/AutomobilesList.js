@@ -25,6 +25,7 @@ function AutomobilesList() {
               <th>Year</th>
               <th>Model</th>
               <th>Manufacturer</th>
+              <th>Sold</th>
             </tr>
           </thead>
           <tbody>
@@ -36,6 +37,7 @@ function AutomobilesList() {
                 <td>{ automobile.year } </td>
                 <td>{ automobile.model.name } </td>
                 <td>{ automobile.model.manufacturer.name } </td>
+                <td>{ automobile.sold.toString() }</td>
               </tr>
             );
           })}
