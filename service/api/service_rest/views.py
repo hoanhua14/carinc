@@ -13,7 +13,6 @@ class TechEncoder(ModelEncoder):
         "employee_id",
         "id",
     ]
-
 class AppointmentEncoder(ModelEncoder):
     model = Appointment
     properties = [
