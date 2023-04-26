@@ -17,6 +17,9 @@ function AutomobilesList() {
 
     return (
         <>
+        <div className=" py-3 text-left">
+            <h1>Automobiles</h1>
+        </div>
         <table className="table table-striped">
           <thead>
             <tr>
