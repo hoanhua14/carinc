@@ -23,4 +23,8 @@ async function loadModels() {
     console.error(response)
   }
 }
+
+
 loadModels()
+
+// async function loadTechnicians() {}
