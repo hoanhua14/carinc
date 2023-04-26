@@ -1,6 +1,19 @@
-import { NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-export default function VehicleModels(props) {
+export default function VehicleModels() {
+    const [models, setModels] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            const url = "http://localhost:8100/api/models/";
+            const response = await fetch(url);
+            if (response.ok) {
+                const data = await response.json();
+                setModels(data.models);
+            }
+        }
+        fetchData();
+    }, []);
+
     return (
         <>
             <div>Models</div>
@@ -14,7 +27,7 @@ export default function VehicleModels(props) {
                         </tr>
                     </thead>
                     <tbody>
-                    {props.models?.map((model) => {
+                    {models?.map((model) => {
                         return (
                             <tr key={model.id}>
                                 <td>{model.name}</td>
