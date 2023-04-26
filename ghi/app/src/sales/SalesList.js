@@ -18,6 +18,9 @@ function SalesList() {
 
     return (
         <>
+        <div className=" py-3 text-left">
+            <h1>Sales</h1>
+        </div>
         <table className="table table-striped">
           <thead>
             <tr>
