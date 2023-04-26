@@ -10,7 +10,7 @@ export default function NewTechForm() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const url = 'http://localhost:8100/api/technicians/';
+        const url = 'http://localhost:8080/api/technicians/';
 
         const fetchConfig = {
             method: "post",

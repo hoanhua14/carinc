@@ -42,7 +42,10 @@ export default function NewModelForm() {
                 manufacturer: '',
             });
             document.getElementById("create-model-form").reset()
+
         }
+
+
     }
 
     const handleFormChange = (e) => {

@@ -26,7 +26,7 @@ function App(props) {
             <Route path="new" element={<AutomobileForm />} />
           </Route>
           <Route path="models">
-            <Route index element={<VehicleModels models={props.models}/>} />
+            <Route index element={<VehicleModels models={props.models} />} />
             <Route path="new" element={<NewModelForm />} />
           </Route>
           <Route path="technicians" >
