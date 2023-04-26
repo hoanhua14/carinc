@@ -7,8 +7,8 @@ import AutomobilesList from './AutomobilesList';
 import AutomobileForm from './AutomobileForm';
 import VehicleModels from './ModelList';
 import NewModelForm from './NewModelForm';
-import NewTechForm from './NewTechForm';
-import TechList from './TechList';
+import NewTechForm from './service/NewTechForm';
+import TechList from './service/TechList';
 import SalespeopleList from './sales/SalespeopleList';
 import SalespersonForm from './sales/SalespersonForm';
 import CustomersList from './sales/CustomersList';
@@ -16,6 +16,9 @@ import CustomerForm from './sales/CustomerForm';
 import SalesList from './sales/SalesList';
 import SaleForm from './sales/SaleForm';
 import SalespersonHistory from './sales/SalespersonHistory';
+import AppList from './service/AppList';
+import AppForm from './service/AppForm';
+
 
 function App(props) {
   return (
@@ -39,6 +42,10 @@ function App(props) {
           <Route path="technicians" >
             <Route path="" element={<TechList/>} />
             <Route path="new" element={<NewTechForm />} />
+          </Route>
+          <Route path="appointments" >
+            {/* <Route path="" element={<AppList/>} /> */}
+            <Route path="new" element={<AppForm />} />
           </Route>
           <Route path="salespeople">
             <Route path="" element={<SalespeopleList />} />

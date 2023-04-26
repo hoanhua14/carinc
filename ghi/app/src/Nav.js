@@ -26,6 +26,9 @@ function Nav() {
               <div className="dropdown-menu">
                 <NavLink className="dropdown-item" to="/technicians">Technicians</NavLink>
                 <NavLink className="dropdown-item" to="/technicians/new">Add a Technician</NavLink>
+                <NavLink className="dropdown-item" to="/appointments">Service Appointments</NavLink>
+                <NavLink className="dropdown-item" to="/appointments/new">Create a service appointment</NavLink>
+                <NavLink className="dropdown-item" to="/appointments/history">Service history</NavLink>
               </div>
             </li>
             <li className="nav-item dropdown">
