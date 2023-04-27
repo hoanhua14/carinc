@@ -5,6 +5,7 @@ from common.json import ModelEncoder
 import json
 from .models import Technician, Appointment, AutomobileVO
 
+
 class TechEncoder(ModelEncoder):
     model = Technician
     properties = [
@@ -18,7 +19,8 @@ class AppointmentEncoder(ModelEncoder):
     properties = [
         "vin",
         "customer",
-        "date_time",
+        "date",
+        "time",
         "technician",
         "reason",
         "status",
@@ -85,6 +87,7 @@ def api_list_appointments(request):
         technician = None
         try:
             tech_id = content["technician"]
+            print(content['technician'])
             technician = Technician.objects.get(id=tech_id)
             content["technician"] = technician
         except Technician.DoesNotExist:
