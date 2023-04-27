@@ -28,11 +28,11 @@ class AppointmentEncoder(ModelEncoder):
         "technician": TechEncoder()
     }
 
-    def get_extra_data(self, o):
-        count = AutomobileVO.objects.filter(vin=o.vin).count()
-        return {
-            "VIP": count > 0
-        }
+    # def get_extra_data(self, o):
+    #     count = AutomobileVO.objects.filter(vin=o.vin).count()
+    #     return {
+    #         "VIP": count > 0
+    #     }
 
     def get_extra_data(self, o):
         return {
@@ -95,6 +95,7 @@ def api_list_appointments(request):
 
         appointment = Appointment.objects.create(**content)
         appointment.status = "Created"
+        appointment.save()
         return JsonResponse(
             appointment,
             encoder=AppointmentEncoder,
