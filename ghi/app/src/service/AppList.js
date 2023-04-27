@@ -8,7 +8,8 @@ export default function AppList() {
         const response = await fetch(url);
         if (response.ok) {
             const data = await response.json();
-            setAppointments(data.appointments);
+            const activeApps = data.appointments.filter(appointment => appointment.status === 'Created');
+            setAppointments(activeApps);
         }
     }
 //fetchAppointmentData's last code will rerender the page by updating the state, so whenever
@@ -22,9 +23,31 @@ export default function AppList() {
         const cancelResponse = await fetch(url, fetchConfig);
         if (cancelResponse.ok) {
             console.log('Canceled');
-            fetchAppointmentData();
-        }
+            setAppointments(oldAppointments => {
+              const filteredApps = oldAppointments.filter(appointment => {
+                return appointment.id !== id;
+              });
+              return filteredApps;
+            });
+          }
     }
+
+    const handleFinish = async (id) => {
+        const url = `http://localhost:8080/api/appointments/${id}/cancel`;
+        const fetchConfig = {
+            method: 'PUT',
+        }
+        const finishResponse = await fetch(url, fetchConfig);
+        if (finishResponse.ok) {
+            console.log('Finished');
+            setAppointments(oldAppointments => {
+                const filteredApps = oldAppointments.filter(appointment => {
+                  return appointment.id !== id;
+                });
+                return filteredApps;
+              });
+            }
+        }
 
 
 
@@ -76,7 +99,7 @@ export default function AppList() {
                                 </button>
                             </td>
                             <td>
-                                <button>
+                                <button onClick={() => handleFinish(appointment.id)}>
                                     Finish
                                 </button>
                             </td>

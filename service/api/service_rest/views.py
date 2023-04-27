@@ -139,6 +139,7 @@ def api_update_appointment(request, pk):
 def api_cancel_app(request, pk):
     appointment = Appointment.objects.get(id=pk)
     appointment.status = "Canceled"
+    appointment.save()
     return JsonResponse(
         appointment,
         encoder=AppointmentEncoder,
@@ -149,6 +150,7 @@ def api_cancel_app(request, pk):
 def api_finish_app(request, pk):
     appointment = Appointment.objects.get(id=pk)
     appointment.status = "Finished"
+    appointment.save()
     return JsonResponse(
         appointment,
         encoder=AppointmentEncoder,
