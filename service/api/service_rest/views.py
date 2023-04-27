@@ -29,6 +29,12 @@ class AppointmentEncoder(ModelEncoder):
     }
 
     def get_extra_data(self, o):
+        count = AutomobileVO.objects.filter(vin=o.vin).count()
+        return {
+            "VIP": count > 0
+        }
+
+    def get_extra_data(self, o):
         return {
             "Technician": o.technician.first_name +" "+ o.technician.last_name
 
