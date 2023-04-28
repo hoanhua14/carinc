@@ -22,7 +22,6 @@ export default function AppList() {
         }
         const cancelResponse = await fetch(url, fetchConfig);
         if (cancelResponse.ok) {
-            console.log('Canceled');
             setAppointments(oldAppointments => {
               const filteredApps = oldAppointments.filter(appointment => {
                 return appointment.id !== id;
@@ -39,7 +38,6 @@ export default function AppList() {
         }
         const finishResponse = await fetch(url, fetchConfig);
         if (finishResponse.ok) {
-            console.log('Finished');
             setAppointments(oldAppointments => {
                 const filteredApps = oldAppointments.filter(appointment => {
                   return appointment.id !== id;
