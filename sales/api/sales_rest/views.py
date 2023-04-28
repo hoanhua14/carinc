@@ -44,8 +44,18 @@ def api_salesperson(request, id):
             response.status_code = 404
             return response
     elif request.method == "DELETE":
-        count, _ = Salesperson.objects.filter(id=id).delete()
-        return JsonResponse({"deleted": count > 0})
+        try:
+            salesperson = Salesperson.objects.get(id=id)
+            salesperson.delete()
+            return JsonResponse(
+                {"message": "Salesperson deleted"}
+            )
+        except Salesperson.DoesNotExist:
+            response = JsonResponse(
+                {"message": "Salesperson does not exist"}
+            )
+            response.status_code = 404
+            return response
     else:
         content = json.loads(request.body)
         try:
@@ -100,8 +110,18 @@ def api_customer(request, id):
             response.status_code = 404
             return response
     elif request.method == "DELETE":
-        count, _ = Customer.objects.filter(id=id).delete()
-        return JsonResponse({"deleted": count > 0})
+        try:
+            customer = Customer.objects.get(id=id)
+            customer.delete()
+            return JsonResponse(
+                {"message": "Customer deleted"}
+            )
+        except Customer.DoesNotExist:
+            response = JsonResponse(
+                {"message": "Customer does not exist"}
+            )
+            response.status_code = 404
+            return response
     else:
         content = json.loads(request.body)
         try:
@@ -177,8 +197,18 @@ def api_sale(request, id):
             response.status_code = 404
             return response
     elif request.method == "DELETE":
-        count, _ = Sale.objects.filter(id=id).delete()
-        return JsonResponse({"deleted": count > 0})
+        try:
+            sale = Sale.objects.get(id=id)
+            sale.delete()
+            return JsonResponse(
+                {"message": "Sale deleted"}
+            )
+        except Sale.DoesNotExist:
+            response = JsonResponse(
+                {"message": "Sale does not exist"}
+            )
+            response.status_code = 404
+            return response
     else:
         content = json.loads(request.body)
         try:
@@ -210,7 +240,7 @@ def api_sale(request, id):
                 encoder=SaleEncoder,
                 safe=False,
             )
-        except Customer.DoesNotExist:
+        except Sale.DoesNotExist:
             response = JsonResponse({"message": "Does not exist"})
             response.status_code = 404
             return response
