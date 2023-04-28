@@ -20,10 +20,7 @@ def get_automobiles():
         AutomobileVO.objects.update_or_create(
             import_href = automobile["href"],
             defaults={
-                "color": automobile["color"],
-                "year": automobile["year"],
                 "vin": automobile["vin"],
-                "sold": automobile["sold"],
             },
         )
 
