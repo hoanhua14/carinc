@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 export default function AppForm() {
     const [vin, setVin] = useState('');
     const [customer, setCustomer] = useState('');
-    const [date, setDate] = useState('');
-    const [time, setTime] = useState('');
+    const [datetime, setDateTime] = useState('');
+    // const [time, setTime] = useState('');
     const [technicians, setTechnicians] = useState([]);
     const [technician, setTechnician] = useState('');
     const [reason, setReason] = useState('');
@@ -22,15 +22,15 @@ export default function AppForm() {
         setCustomer(value);
     }
 
-    const handleDateChange = (event) => {
+    const handleDateTimeChange = (event) => {
         const value = event.target.value;
-        setDate(value);
+        setDateTime(value);
     }
 
-    const handleTimeChange = (event) => {
-        const value = event.target.value;
-        setTime(value);
-    }
+    // const handleTimeChange = (event) => {
+    //     const value = event.target.value;
+    //     setTime(value);
+    // }
 
     const handleTechnicianChange = (event) => {
         const value = event.target.value;
@@ -47,8 +47,8 @@ export default function AppForm() {
         const data = {};
         data.vin = vin;
         data.customer = customer;
-        data.date = date;
-        data.time = time;
+        data.date_time = datetime;
+        // data.time = time;
         data.technician = technician;
         data.reason = reason;
 
@@ -66,8 +66,8 @@ export default function AppForm() {
             const newApp = await response.json();
             setVin('');
             setCustomer('');
-            setDate('');
-            setTime('');
+            setDateTime('');
+            // setTime('');
             setTechnician('');
             setReason('');
         }
@@ -111,12 +111,17 @@ export default function AppForm() {
                         </div>
 
                         <div className="form-floating mb-3">
-                            <input onChange={handleDateChange} value={date} placeholder="Date" required type="date" name="date_time" id="date" className="form-control" />
-                            <label htmlFor="date">Date</label>
-                        </div>
-                        <div className="form-floating mb-3">
-                            <input onChange={handleTimeChange} value={time} placeholder="Time" required type="time" name="date_time" id="time" className="form-control" />
-                            <label htmlFor="time">Time</label>
+                            <input
+                                onChange={handleDateTimeChange}
+                                value={datetime}
+                                placeholder="Date and Time"
+                                required
+                                type="datetime-local"
+                                name="date_time"
+                                id="date_time"
+                                className="form-control"
+                            />
+                            <label htmlFor="date_time">Date and Time</label>
                         </div>
                         <div className="mb-3">
                             <select onChange={handleTechnicianChange} value={technician} required name="technician" id="technician" className="form-select">
