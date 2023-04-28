@@ -83,7 +83,6 @@ def api_list_appointments(request):
             {"appointments": appointments},
             encoder=AppointmentEncoder,
         )
-#create an app
     else:
         content = json.loads(request.body)
         technician = None
@@ -128,9 +127,6 @@ def api_update_appointment(request, pk):
             appointment = Appointment.objects.get(id=pk)
             appointment.delete()
             return JsonResponse(
-                # appointment,
-                # encoder=AppointmentEncoder,
-                # safe= False
                 {"deleted": True}
             )
         except Appointment.DoesNotExist:
