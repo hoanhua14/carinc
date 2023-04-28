@@ -34,10 +34,17 @@ class AppointmentEncoder(ModelEncoder):
     #         "VIP": count > 0
     #     }
 
-    def get_extra_data(self, o):
-        return {
-            "Technician": o.technician.first_name +" "+ o.technician.last_name
+    # def get_extra_data(self, o):
+    #     return {
+    #         "Technician": o.technician.first_name +" "+ o.technician.last_name
 
+    #     }
+    def get_extra_data(self, o):
+        count = AutomobileVO.objects.filter(vin=o.vin).count()
+        technician_name = o.technician.first_name + " " + o.technician.last_name
+        return {
+            "VIP": count > 0,
+            "Technician": technician_name
         }
 
 

@@ -7,6 +7,7 @@ class Technician(models.Model):
 
 class AutomobileVO(models.Model):
     vin = models.CharField(max_length=2000)
+    sold = models.BooleanField(default=False)
 
 class Appointment(models.Model):
     date_time = models.DateTimeField()
