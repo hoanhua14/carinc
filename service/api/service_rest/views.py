@@ -71,9 +71,9 @@ def api_delete_tech(request, pk):
             technician.delete()
             response = {"deleted": True}
         except Technician.DoesNotExist:
-            response = {"deleted": False, "message": "Technician does not exist"}
-            status=400
-        return JsonResponse(response, safe=False)
+            response = JsonResponse({"message": "Does not exist"})
+            response.status_code = 404
+            return response
 
 @require_http_methods(["GET","POST"])
 def api_list_appointments(request):
@@ -134,7 +134,7 @@ def api_update_appointment(request, pk):
                 {"deleted": True}
             )
         except Appointment.DoesNotExist:
-            response = JsonResponse({"message": "Appointment does not exist"})
+            response = JsonResponse({"message": "Does not exist"})
             response.status_code = 404
             return response
 
