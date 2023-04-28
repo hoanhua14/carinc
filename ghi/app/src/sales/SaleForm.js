@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function SaleForm() {
 
@@ -9,6 +10,7 @@ function SaleForm() {
     const [automobile, setAutomobile] = useState('');
     const [salesperson, setSalesperson] = useState('');
     const [customer, setCustomer] = useState('');
+    const navigate = useNavigate();
 
     const handlePriceChange = (event) => {
         const value = event.target.value;
@@ -56,6 +58,8 @@ function SaleForm() {
             setAutomobile('');
             setSalesperson('');
             setCustomer('');
+
+            navigate('/sales');
         }
     }
 
