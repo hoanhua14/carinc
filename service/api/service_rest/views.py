@@ -28,17 +28,7 @@ class AppointmentEncoder(ModelEncoder):
         "technician": TechEncoder()
     }
 
-    # def get_extra_data(self, o):
-    #     count = AutomobileVO.objects.filter(vin=o.vin).count()
-    #     return {
-    #         "VIP": count > 0
-    #     }
 
-    # def get_extra_data(self, o):
-    #     return {
-    #         "Technician": o.technician.first_name +" "+ o.technician.last_name
-
-    #     }
     def get_extra_data(self, o):
         count = AutomobileVO.objects.filter(vin=o.vin).count()
         technician_name = o.technician.first_name + " " + o.technician.last_name
@@ -58,13 +48,20 @@ def api_list_techs(request):
             encoder=TechEncoder,
         )
     else: #create a tech
-        content = json.loads(request.body)
-        technician = Technician.objects.create(**content)
-        return JsonResponse(
-            technician,
-            encoder=TechEncoder,
-            safe=False,
-        )
+        try:
+            content = json.loads(request.body)
+            technician = Technician.objects.create(**content)
+            return JsonResponse(
+                technician,
+                encoder=TechEncoder,
+                safe=False,
+            )
+        except:
+            response = JsonResponse(
+                {"message": "Couldn't create a technician"}
+            )
+            response.status_code=400
+            return response
 
 @require_http_methods(["DELETE"])
 def api_delete_tech(request, pk):

@@ -42,6 +42,7 @@ export default function ServiceHistory() {
                 value={searchValue}
                 onChange={handleSearchValueChange}
             />
+            <button type="submit" id="searchButton">Search</button>
             <table className="table table-striped">
                 <thead>
                     <tr>
