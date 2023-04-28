@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+
 
 function CustomerForm() {
 
@@ -6,6 +9,7 @@ function CustomerForm() {
     const [lastName, setLastName] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [address, setAddress] = useState('');
+    const navigate = useNavigate();
 
     const handleFirstNameChange = (event) => {
         const value = event.target.value;
@@ -53,6 +57,8 @@ function CustomerForm() {
             setLastName('');
             setPhoneNumber('');
             setAddress('');
+
+            navigate('/customers');
         }
     }
 
