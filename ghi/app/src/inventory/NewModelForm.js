@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function NewModelForm() {
     const [manufacturers, setManufacturers] = useState([]);
+    const navigate = useNavigate();
+
 
     const [formData, setFormData] = useState({
         name: '',
@@ -42,7 +46,7 @@ export default function NewModelForm() {
                 manufacturer: '',
             });
             document.getElementById("create-model-form").reset()
-
+            navigate('/models');
         }
 
 

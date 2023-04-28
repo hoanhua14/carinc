@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function AppForm() {
     const [vin, setVin] = useState('');
@@ -8,7 +9,7 @@ export default function AppForm() {
     const [technicians, setTechnicians] = useState([]);
     const [technician, setTechnician] = useState('');
     const [reason, setReason] = useState('');
-
+    const navigate = useNavigate();
 
 
     const handleVinChange = (event) => {
@@ -62,6 +63,7 @@ export default function AppForm() {
             setDateTime('');
             setTechnician('');
             setReason('');
+            navigate('/appointments');
         }
     }
 

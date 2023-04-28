@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function NewTechForm() {
-
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         first_name: '',
         last_name: '',
@@ -26,9 +27,12 @@ export default function NewTechForm() {
                 first_name: '',
                 last_name: '',
                 employee_id: '',
+
             });
             document.getElementById("create-technician-form").reset()
+            navigate('/technicians');
         }
+
     }
 
     const handleFormChange = (e) => {
@@ -40,6 +44,8 @@ export default function NewTechForm() {
             [inputName]: value
         })
     }
+
+
 
 
     return (
