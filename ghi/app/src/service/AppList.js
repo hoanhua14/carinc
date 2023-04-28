@@ -33,7 +33,7 @@ export default function AppList() {
     }
 
     const handleFinish = async (id) => {
-        const url = `http://localhost:8080/api/appointments/${id}/cancel`;
+        const url = `http://localhost:8080/api/appointments/${id}/finish`;
         const fetchConfig = {
             method: 'PUT',
         }

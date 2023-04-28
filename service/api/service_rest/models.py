@@ -9,8 +9,7 @@ class AutomobileVO(models.Model):
     vin = models.CharField(max_length=2000)
 
 class Appointment(models.Model):
-    date = models.DateField(null=True)
-    time = models.TimeField(null=True)
+    date_time = models.DateTimeField()
     reason = models.CharField(max_length=2000)
     status = models.CharField(max_length=2000)
     vin = models.CharField(max_length=2000)
