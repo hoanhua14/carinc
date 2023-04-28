@@ -44,9 +44,21 @@ It has fully functional RESTful endpoints for the following entities:
 
 - Manufacturer: the company that manufactures the automobile
 
+	\- Includes a name field
+
+	\- Using React you can fill out a form with this field to create a manufacturer which will then add it to the list of manufacturers page
+
 - VehicleModel: the model of a vehicle created by the manufacturer
 
+	\- Includes a name, picture url, and manufacturer id field
+
+	\- Using React you can fill out a form with those fields to create a vehicle model which will then add it to the list of models page
+
 - Automobile: the actual automobile of a specific vehicle model
+
+	\- Includes a color, year, vin, and model id field
+
+	\- Using React you can fill out a form with those fields to create an automobile which will then add it to the list of automobiles page
 
 The following documentation describes the available functionality in the Inventory API:
 
@@ -355,15 +367,23 @@ This application comes with a fully-accessible Service API that can keep track o
 
 It has fully functional RESTful endpoints for the following entities:
 
-+  models: Technician, Appointment, and AutomobileVO (with a Vin coming from inventory)
-+ Technician has a first name, last name, and employee ID field
-+ Appointment: date, time, reason, status, vin, customer, and technician field (which has foreign key relationship with Technician)
-+ AutomobileVO: a value object containing VIN retrieved from Automobile model from inventory microservice by polling and sold status.
++  Models: Technician, Appointment, and AutomobileVO (with a Vin coming from inventory)
+
+	\- Technician: has a first name, last name, and employee ID field
+
+	\- Appointment: date, time, reason, status, vin, customer, and technician field (which has foreign key relationship with Technician)
+
+	\- AutomobileVO: a value object containing VIN retrieved from Automobile model from inventory microservice by polling and sold status.
+
 - Technician: allows users to create a technician with a unique employee ID.
+
 - Appointments:
-+Create an appointment: users can make an appointment to have their cars serviced by simply filling out the form with name, time slot, VIN, and reason for service. Moreover, users can decide who they want to work on their vehicles by selecting from the drop down which shows all the technicians in the database.
-+Service appointments: an easy way to check all appointments and statuses. On this very same page, users can update the status of their appointments just by clicking Cancel or Finish. Once the status is changed, the appointment will no longer show in this page, but will be moved to Service history page.
-+Service history: showing all appointments in the database. The search bar on top of the page allows users to filter out the appointment they want to see simply by putting in the VIN.
+
+	\- Create an appointment: users can make an appointment to have their cars serviced by simply filling out the form with name, time slot, VIN, and reason for service. Moreover, users can decide who they want to work on their vehicles by selecting from the drop down which shows all the technicians in the database.
+
+	\- Service appointments: an easy way to check all appointments and statuses. On this very same page, users can update the status of their appointments just by clicking Cancel or Finish. Once the status is changed, the appointment will no longer show in this page, but will be moved to Service history page.
+
+	\- Service history: showing all appointments in the database. The search bar on top of the page allows users to filter out the appointment they want to see simply by putting in the VIN.
 
 The following documentation describes the available functionality in the Service API:
 
@@ -571,9 +591,27 @@ It has fully functional RESTful endpoints for the following entities:
 
 - Salesperson: the person selling the automobiles
 
+    \- Includes a first name, last name, and employee id field
+
+	\- Using React you can fill out a form with those fields to create a salesperson which will then add it to the list of salespeople page
+
 - Customer: the person buying an automobile or utilizing our services
 
+	\- Includes a first name, last name, phone number, and address field
+
+	\- Using React you can fill out a form with those fields to create a customer which will then add it to the list of customers page
+
+- Sale:
+
+	\- Includes a price, automobile, salesperson, and customer field
+
+	\- Using React you can fill out a form with those fields to create a sale which will then add it to the list of sales page
+
+	\- You can also see the sales done by a specific salesperson by using the drop down feature on the Salesperson History page
+
 - AutomobileVO: a value object used to represent your automobile
+
+	\- This value object is polling data from the Automobile model in the Inventory microservice
 
 The following documentation describes the available functionality in the Sales API:
 
