@@ -37,7 +37,6 @@ export default function VehicleModels() {
                                     width="100"
                                     height="100"/>
                                 </td>
-                                {/* <td>{model.picture_url}</td> */}
                             </tr>
                         )
                     })}

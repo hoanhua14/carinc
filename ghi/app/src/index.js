@@ -8,21 +8,3 @@ root.render(
     <App />
   </React.StrictMode>
 );
-
-// try to grab all vehicle models
-// async function loadModels() {
-//   const response = await fetch("http://localhost:8100/api/models/")
-//   if (response.ok) {
-//     const data = await response.json()
-//     root.render(
-//       <React.StrictMode>
-//         <App />
-//       </React.StrictMode>
-//     )
-//   } else {
-//     console.error(response)
-//   }
-// }
-
-
-// loadModels()

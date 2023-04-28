@@ -42,12 +42,11 @@ class AppointmentEncoder(ModelEncoder):
 def api_list_techs(request):
     if request.method == "GET":
         technicians = Technician.objects.all()
-        print("all techs", technicians)
         return JsonResponse(
             {"technicians": technicians},
             encoder=TechEncoder,
         )
-    else: #create a tech
+    else:
         try:
             content = json.loads(request.body)
             technician = Technician.objects.create(**content)
