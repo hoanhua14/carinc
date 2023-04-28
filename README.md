@@ -601,7 +601,7 @@ It has fully functional RESTful endpoints for the following entities:
 
 	\- Using React you can fill out a form with those fields to create a customer which will then add it to the list of customers page
 
-- Sale
+- Sale:
 
 	\- Includes a price, automobile, salesperson, and customer field
 
