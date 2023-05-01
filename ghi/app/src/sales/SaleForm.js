@@ -59,6 +59,19 @@ function SaleForm() {
             setSalesperson('');
             setCustomer('');
 
+            const soldUrl = `http://localhost:8100/api/automobiles/${automobile}/`;
+            const updateConfig = {
+                method: "put",
+                body: JSON.stringify({ sold: true }),
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+            };
+            const updateResponse = await fetch(soldUrl, updateConfig);
+            if (updateResponse.ok) {
+                console.log("Sold status changed");
+            }
+
             navigate('/sales');
         }
     }
